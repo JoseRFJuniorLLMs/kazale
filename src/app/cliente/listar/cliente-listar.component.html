@@ -1,0 +1,48 @@
+<h1>Listagem de Clientes</h1>
+
+<div>
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th class="text-right">
+                <a class="btn btn-success" 
+                    [routerLink]="['/clientes/cadastrar']">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </th>
+        </tr>
+        <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nome }}</td>
+            <td class="text-right">
+				<a class="btn btn-warning" 
+                    [routerLink]="['/clientes/visualizar/'+cliente.id]">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </a>
+				<a class="btn btn-info" 
+                    [routerLink]="['/clientes/editar/'+cliente.id]">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                </a>
+                <button type="button" class="btn btn-danger" 
+                    data-toggle="modal" data-target="#modalExcluir"
+                    (click)="excluir(cliente.id)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <kz-paginacao *ngIf="clientes.length>0"
+        [totalRegistros]="totalRegistros"
+        (onPaginate)="paginar($event)">
+    </kz-paginacao>
+    <p *ngIf="clientes.length==0" class="text-center">
+        <i>Nenhum registro encontrado.</i>
+    </p>
+    <kz-modal-util 
+        [id]="'modalExcluir'" 
+        [titulo]="'Excluir Cliente'"
+        [descricao]="'Deseja realmente excluir o registro selecionado?'"
+        (onConfirm)="onExcluir($event)">
+    </kz-modal-util>
+</div>

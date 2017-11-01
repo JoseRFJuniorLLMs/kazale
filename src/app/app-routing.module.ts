@@ -9,9 +9,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DemoRoutes } from './demo';
+import { ClienteRoutes } from './cliente';
+
 
 export const routes: Routes = [
-	...DemoRoutes
+  ...DemoRoutes,
+  ...ClienteRoutes
 ];
 
 @NgModule({

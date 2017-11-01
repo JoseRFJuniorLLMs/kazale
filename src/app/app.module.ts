@@ -1,3 +1,4 @@
+import { ClienteModule } from './cliente/cliente.module';
 /**
  * Arquivo de módulo principal da aplicação.
  *
@@ -17,7 +18,8 @@ import { DemoModule } from './';
   imports:      [
     BrowserModule,
     AppRoutingModule,
-    DemoModule
+    DemoModule,
+    ClienteModule
   ],
   declarations: [ 
     AppComponent
